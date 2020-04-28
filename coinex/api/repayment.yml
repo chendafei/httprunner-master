@@ -1,0 +1,45 @@
+- config:
+      name: 还币
+      variables:
+        Authorization: 53383C06B6E449FFB5444432B456F72E
+      base_url: http://test2.coinex.com
+
+- test:
+    name: 还币数量正确
+    request:
+      headers:
+        Content-Type: application/json
+        Authorization: "$Authorization"
+      json:
+        coin_type: BSV
+        flat_amount: "$flat_amount"
+        totp_captcha:
+          validate_code: 111111
+          sequence:
+      method: POST
+      url: /res/credit/to/flat?X-CSRF-TOKEN=DI12i7hp
+    validate:
+      - eq: [status_code, 200]
+      - eq: [headers.Content-Type, application/json]
+      - eq: [content.message, Ok]
+
+
+- test:
+    name: 还币数量正确
+    request:
+      headers:
+        Content-Type: application/json
+        Authorization: "$Authorization"
+      json:
+        coin_type: BSV
+        flat_amount: "$flat_amount"
+        totp_captcha:
+          validate_code: 111111
+          sequence:
+      method: POST
+      url: /res/credit/to/flat?X-CSRF-TOKEN=DI12i7hp
+    validate:
+      - eq: [status_code, 200]
+      - eq: [headers.Content-Type, application/json]
+      - eq: [content.message, Ok]
+

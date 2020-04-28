@@ -1,0 +1,8 @@
+config:
+    name: testcase description
+
+testcases:
+    create user:
+        testcase: /api/repayment.yml
+        parameters:
+          flat_amount: [0.1, 0.2, 0.3]
